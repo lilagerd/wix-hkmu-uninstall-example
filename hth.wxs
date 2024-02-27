@@ -1,0 +1,22 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="HTH-Plugin v$(var.FINEVER)" Scope="perUserOrMachine" Manufacturer="HTH" UpgradeCode="11111111-E6C8-4063-A488-C05E530BF6C3" Language="!(loc.LANG)" Codepage="1250" Version="$(var.VER)" InstallerVersion="450" ProductCode="$(var.PRODUCT_ID)"><SummaryInformation Keywords="Installer" Description="HTH-Plugin $(var.FINEVER) Installer" />
+
+    <Feature Id="Complete" Title="HTH-Plugin" Display="expand" Level="1">
+      <Feature Id="MainFeature" Title="HTH Plugin" Level="1">
+        <ComponentRef Id="reg_entries" />
+      </Feature>
+    </Feature>
+
+    <UIRef Id="WixUI"/>
+  
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLDIR" Name="HTHTEST">
+      <Component Id="reg_entries" Guid="11153711-E6C8-4063-A488-C05E530BF6C3" Bitness="always64">
+        <RegistryKey Root="HKMU" Key="SOFTWARE\HTH\HTH_PLUGIN">
+           <RegistryValue Type="integer" Name="test" Value="1" />
+        </RegistryKey>
+      </Component>
+      </Directory>
+    </StandardDirectory>
+  </Package>
+</Wix>
